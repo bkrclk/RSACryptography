@@ -1,6 +1,5 @@
 Sertifika oluşturma işlemi için gerekli olan bazı yöntemler vardır bunlardan biride bizim kullanmış olduğumuz OpenSSL kütüphanesidir
-ilk önce aşağıdaki linkten yardımcı porgramı indirebilirsiniz
-https://sourceforge.net/projects/gnuwin32/
+ilk önce https://sourceforge.net/projects/gnuwin32/ adresine gidip yardımcı porgramı indirebilirsiniz
 
 Ardından dosya dizini içersinde aşağıdaki komutları girip public/private keyler oluşturulur.
 
