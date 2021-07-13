@@ -14,10 +14,11 @@ namespace RSACryptography
 
         public string Encrypt(string plainText)
         {
-            csp = new RSACryptoServiceProvider();
             csp.FromXmlString(publicKey.ToString());
+
             var data = Encoding.Unicode.GetBytes(plainText);
             var cypher = csp.Encrypt(data, false);
+
             return Convert.ToBase64String(cypher);
 
         }
@@ -26,7 +27,9 @@ namespace RSACryptography
         {
             var dataBytes = Convert.FromBase64String(cypherText);
             csp.FromXmlString(privateKey.ToString());
+
             var plainText = csp.Decrypt(dataBytes, false);
+
             return Encoding.Unicode.GetString(plainText);
 
         }

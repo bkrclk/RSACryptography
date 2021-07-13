@@ -11,38 +11,51 @@ namespace RSACryptography
     {
         static void Main(string[] args)
         {
-            RsaEncryption rsa = new RsaEncryption();
+            while (true)
+            {
+                RsaEncryption rsa = new RsaEncryption();
 
-            ConsoleWriteInColor("Input Text : ", null, ConsoleColor.Blue, ConsoleColor.Black);
-            var inputText = Console.ReadLine();
-            var cypherText = rsa.Encrypt(inputText);
-            ConsoleWriteInColor("Encrypt CypherText : ", cypherText, ConsoleColor.Green, ConsoleColor.Black);
-            Console.WriteLine("\n");
+                ConsoleWriteInColor("Select: 1-Encrypt 2-Decrypt : ", null, ConsoleColor.Yellow, ConsoleColor.Black);
+                var operation = Console.ReadLine();
 
-            ConsoleWriteInColor("Encrypt CypherText Input : ", null, ConsoleColor.Green, ConsoleColor.Black);
-            var encryptText = Console.ReadLine();
-            var decryptText = rsa.Decrypt(encryptText);
-            ConsoleWriteInColor("Decrypt PlainText : ", decryptText, ConsoleColor.Blue, ConsoleColor.Black);
+                if(operation == "1")
+                {
+                    ConsoleWriteInColor("Input Text : ", null, ConsoleColor.Blue, ConsoleColor.Black);
+                    var inputText = Console.ReadLine();
+                    var cypherText = rsa.Encrypt(inputText);
+                    ConsoleWriteInColor("Encrypt CypherText : ", cypherText, ConsoleColor.Green, ConsoleColor.Black);
+                    Console.WriteLine("\n");
+                }
+                else if (operation == "2")
+                {
+                    ConsoleWriteInColor("Encrypt CypherText Input : ", null, ConsoleColor.Green, ConsoleColor.Black);
+                    var encryptText = Console.ReadLine();
+                    var decryptText = rsa.Decrypt(encryptText);
+                    ConsoleWriteInColor("Decrypt PlainText : ", decryptText, ConsoleColor.Blue, ConsoleColor.Black);
 
-            Console.ReadKey();
+                    Console.WriteLine("\n");
+                }
+                else
+                {
+                    ConsoleWriteInColor("Invalid Selected! ", null, ConsoleColor.Red, ConsoleColor.Black);
+                    Console.WriteLine("\n");
+                } 
+            }
         }
 
-        static void ConsoleWriteInColor(string value, string value2, ConsoleColor ForegroundColor, ConsoleColor BackgroundColor, bool WriteLine = true, bool NullCheck = true)
+        static void ConsoleWriteInColor(string description, string value, ConsoleColor ForegroundColor, ConsoleColor BackgroundColor, bool WriteLine = true, bool NullCheck = true)
         {
-            if (NullCheck && string.IsNullOrWhiteSpace(value))
-                value = "-";
+            if (NullCheck && string.IsNullOrWhiteSpace(description))
+                description = "-";
             else
             {
                 Console.BackgroundColor = BackgroundColor;
                 Console.ForegroundColor = ForegroundColor;
             }
 
-            Console.Write(value);
+            Console.Write(description);
             Console.ResetColor();
-            Console.Write(value2);
-
-            if (WriteLine)
-                Console.WriteLine();
+            Console.Write(value);
         }
     }
 }
