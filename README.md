@@ -8,3 +8,5 @@ genrsa -out privateKey.pem 2048\
 
 rsa -in privateKey.pem -pubout -out publicKey.pem\
 ![Screenshot_2](https://user-images.githubusercontent.com/54475720/125290532-14f99f80-e329-11eb-8453-277f0db0aae8.png)
+
+NOT: Son commit içerisinde OpenSSL ile oluşturulan keylere gerek duyulmadan Enviromentta public-private keyler belirtilmiştir. OpenSSL ile key generate etme işlemi farklı bir tercih sebebi olabilir.
