@@ -13,19 +13,20 @@ namespace RSACryptography
         {
             RsaEncryption rsa = new RsaEncryption();
 
-            var encryptText = "HelloWorld.123";
+            ConsoleWriteInColor("Input Text : ", null, ConsoleColor.Blue, ConsoleColor.Black);
+            var inputText = Console.ReadLine();
+            var cypherText = rsa.Encrypt(inputText);
+            ConsoleWriteInColor("Encrypt CypherText : ", cypherText, ConsoleColor.Green, ConsoleColor.Black);
+            Console.WriteLine("\n");
 
-            var cypher = rsa.Encrypt(encryptText);
-            var decryptText = rsa.Decrypt(cypher);
-
-            ConsoleWriteInColor("PlainText : ", encryptText, ConsoleColor.Red, ConsoleColor.Black);
-            ConsoleWriteInColor("Encrypt CypherText : " , cypher, ConsoleColor.Green, ConsoleColor.Black);
-            ConsoleWriteInColor("Decrypt PlainText : " , decryptText, ConsoleColor.Yellow, ConsoleColor.Black);
+            ConsoleWriteInColor("Encrypt CypherText Input : ", null, ConsoleColor.Green, ConsoleColor.Black);
+            var encryptText = Console.ReadLine();
+            var decryptText = rsa.Decrypt(encryptText);
+            ConsoleWriteInColor("Decrypt PlainText : ", decryptText, ConsoleColor.Blue, ConsoleColor.Black);
 
             Console.ReadKey();
         }
 
-        // Console renklendirmesi için yardımcı metod
         static void ConsoleWriteInColor(string value, string value2, ConsoleColor ForegroundColor, ConsoleColor BackgroundColor, bool WriteLine = true, bool NullCheck = true)
         {
             if (NullCheck && string.IsNullOrWhiteSpace(value))
