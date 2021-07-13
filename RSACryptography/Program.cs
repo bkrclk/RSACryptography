@@ -30,6 +30,12 @@ namespace RSACryptography
                 {
                     ConsoleWriteInColor("Encrypt CypherText Input : ", null, ConsoleColor.Green, ConsoleColor.Black);
                     var encryptText = Console.ReadLine();
+                    if (string.IsNullOrEmpty(encryptText) || !IsBase64String(encryptText))
+                    {
+                        ConsoleWriteInColor("Invalid Selected! ", null, ConsoleColor.Red, ConsoleColor.Black);
+                        Console.WriteLine("\n");
+                        continue;
+                    }
                     var decryptText = rsa.Decrypt(encryptText);
                     ConsoleWriteInColor("Decrypt PlainText : ", decryptText, ConsoleColor.Blue, ConsoleColor.Black);
 
@@ -56,6 +62,12 @@ namespace RSACryptography
             Console.Write(description);
             Console.ResetColor();
             Console.Write(value);
+        }
+
+        public static bool IsBase64String(string base64)
+        {
+            Span<byte> buffer = new Span<byte>(new byte[base64.Length]);
+            return Convert.TryFromBase64String(base64, buffer, out int bytesParsed);
         }
     }
 }
