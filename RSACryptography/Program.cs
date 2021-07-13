@@ -13,39 +13,48 @@ namespace RSACryptography
         {
             while (true)
             {
-                RsaEncryption rsa = new RsaEncryption();
-
-                ConsoleWriteInColor("Select: 1-Encrypt 2-Decrypt : ", null, ConsoleColor.Yellow, ConsoleColor.Black);
-                var operation = Console.ReadLine();
-
-                if(operation == "1")
+                try
                 {
-                    ConsoleWriteInColor("Input Text : ", null, ConsoleColor.Blue, ConsoleColor.Black);
-                    var inputText = Console.ReadLine();
-                    var cypherText = rsa.Encrypt(inputText);
-                    ConsoleWriteInColor("Encrypt CypherText : ", cypherText, ConsoleColor.Green, ConsoleColor.Black);
-                    Console.WriteLine("\n");
-                }
-                else if (operation == "2")
-                {
-                    ConsoleWriteInColor("Encrypt CypherText Input : ", null, ConsoleColor.Green, ConsoleColor.Black);
-                    var encryptText = Console.ReadLine();
-                    if (string.IsNullOrEmpty(encryptText) || !IsBase64String(encryptText))
+                    RsaEncryption rsa = new RsaEncryption();
+
+                    ConsoleWriteInColor("Select: 1-Encrypt 2-Decrypt : ", null, ConsoleColor.Yellow, ConsoleColor.Black);
+                    var operation = Console.ReadLine();
+
+                    if (operation == "1")
                     {
-                        ConsoleWriteInColor("Invalid String Format! ", null, ConsoleColor.Red, ConsoleColor.Black);
+                        ConsoleWriteInColor("Input Text : ", null, ConsoleColor.Blue, ConsoleColor.Black);
+                        var inputText = Console.ReadLine();
+                        var cypherText = rsa.Encrypt(inputText);
+                        ConsoleWriteInColor("Encrypt CypherText : ", cypherText, ConsoleColor.Green, ConsoleColor.Black);
                         Console.WriteLine("\n");
-                        continue;
                     }
-                    var decryptText = rsa.Decrypt(encryptText);
-                    ConsoleWriteInColor("Decrypt PlainText : ", decryptText, ConsoleColor.Blue, ConsoleColor.Black);
+                    else if (operation == "2")
+                    {
+                        ConsoleWriteInColor("Encrypt CypherText Input : ", null, ConsoleColor.Green, ConsoleColor.Black);
+                        var encryptText = Console.ReadLine();
+                        if (string.IsNullOrEmpty(encryptText) || !IsBase64String(encryptText))
+                        {
+                            ConsoleWriteInColor("Invalid String Format! ", null, ConsoleColor.Red, ConsoleColor.Black);
+                            Console.WriteLine("\n");
+                            continue;
+                        }
+                        var decryptText = rsa.Decrypt(encryptText);
+                        ConsoleWriteInColor("Decrypt PlainText : ", decryptText, ConsoleColor.Blue, ConsoleColor.Black);
 
+                        Console.WriteLine("\n");
+                    }
+                    else
+                    {
+                        ConsoleWriteInColor("Invalid Selected! ", null, ConsoleColor.Red, ConsoleColor.Black);
+                        Console.WriteLine("\n");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ConsoleWriteInColor("SYSTEM ERROR! ", ex.Message, ConsoleColor.Red, ConsoleColor.Black);
                     Console.WriteLine("\n");
                 }
-                else
-                {
-                    ConsoleWriteInColor("Invalid Selected! ", null, ConsoleColor.Red, ConsoleColor.Black);
-                    Console.WriteLine("\n");
-                } 
+               
             }
         }
 
