@@ -32,7 +32,7 @@ namespace RSACryptography
                     var encryptText = Console.ReadLine();
                     if (string.IsNullOrEmpty(encryptText) || !IsBase64String(encryptText))
                     {
-                        ConsoleWriteInColor("Invalid Selected! ", null, ConsoleColor.Red, ConsoleColor.Black);
+                        ConsoleWriteInColor("Invalid String Format! ", null, ConsoleColor.Red, ConsoleColor.Black);
                         Console.WriteLine("\n");
                         continue;
                     }
