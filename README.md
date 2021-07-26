@@ -21,3 +21,6 @@ RSA şifrelemesi yalnızca küçük miktarlardaki veriler içindir, şifreleyebi
 4096 RSA anahtari için 383 baytı şifreleyebilirsiniz. 
 Her karekter 1 byte olarak beliritilir
 Bunun iyi bir nedeni var, asimetrik şifreleme hesaplama açısından pahalı. Büyük miktarda veriyi şifrelemek istiyorsanız simetrik şifreleme kullanmalısınız.
+
+
+RSA, güvenliği tam sayıları çarpanlarına ayırmanın algoritmik zorluğuna dayanan bir tür açık anahtarlı şifreleme yöntemidir. 1978’de Ron Rivest, Adi Shamir ve Leonard Adleman tarafından bulunmuştur.
